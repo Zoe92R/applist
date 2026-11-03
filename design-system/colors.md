@@ -51,7 +51,7 @@ Contrast ratios are against `white` unless noted; recheck them whenever a value 
 
 ## Rules
 
-- Page background is `white`; `neutral-50` is only for table headers, row hover, expanded rows and the sign-in page.
+- Page background is `white`.
 - Text: `neutral-900` primary, `neutral-600` secondary, `neutral-500` placeholders. Nothing lighter than `neutral-500` for text.
 - `primary-600` means "act": one primary button per view, links, focus ring. Don't use indigo for decoration.
 - Status color appears only on the status badge (and the mobile card's left edge). Company names stay neutral.
