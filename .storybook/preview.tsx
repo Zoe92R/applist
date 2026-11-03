@@ -1,7 +1,15 @@
 import type { Preview } from '@storybook/nextjs-vite'
+import { geistSans, manrope } from '../app/fonts'
 import '../app/globals.css'
 
 const preview: Preview = {
+  decorators: [
+    (Story) => (
+      <div className={`${geistSans.variable} ${manrope.variable} font-sans antialiased`}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     controls: {
       matchers: {
