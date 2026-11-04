@@ -19,7 +19,7 @@ Geist has tabular numbers: use `tabular-nums` for dates and counts in table colu
 
 Tailwind's default size scale, and only these. No arbitrary sizes like `text-[13px]`.
 
-Titles always use the `Title` component (`components/ui/Title.tsx`), which sets the size, weight, color and heading tag. The wordmark always uses the `Logo` component (`components/ui/Logo.tsx`). Their classes live in those files: never style an `h1`, `h2` or the wordmark by hand.
+Titles always use the `Title` component (`components/ui/Title/Title.tsx`), which sets the size, weight, color and heading tag. The wordmark always uses the `Logo` component (`components/ui/Logo/Logo.tsx`). Their classes live in those files: never style an `h1`, `h2` or the wordmark by hand.
 
 | Style | Use with | px | Use |
 | --- | --- | --- | --- |
@@ -30,7 +30,7 @@ Titles always use the `Title` component (`components/ui/Title.tsx`), which sets 
 | Body emphasis | `text-sm font-medium text-neutral-900` | 14 | Company name in table rows, buttons, toast messages |
 | Secondary | `text-sm text-neutral-600` | 14 | Role, descriptions, helper text |
 | Small | `text-xs` | 12 | Meta lines, counters, badges, tags |
-| Label | `text-xs font-medium text-neutral-500` | 12 | Column headers, section labels, menu labels |
+| Label | `text-xs font-medium text-neutral-600` | 12 | Column headers, section labels, menu labels |
 | Wordmark | `<Logo>` | 20 | "Applyst" only, in the AppBar and on the sign-in page |
 
 ## Weights
