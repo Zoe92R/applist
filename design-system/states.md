@@ -63,7 +63,7 @@ Replaces the table card when there are no applications.
 
 ## Hover
 
-Button hovers live in `components/ui/Button.tsx`.
+Button hovers live in `components/ui/Button/Button.tsx`.
 
 | Element | Hover |
 | --- | --- |
