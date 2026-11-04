@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/nextjs-vite'
-import { geistSans, manrope } from '../app/fonts'
-import '../app/globals.css'
+import { geistSans, manrope } from '@/app/fonts'
+import '@/app/globals.css'
 
 const preview: Preview = {
   decorators: [
