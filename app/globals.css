@@ -34,6 +34,25 @@
   --font-display: var(--font-manrope, Manrope), var(--font-sans);
 }
 
+/* Tooltip enter/exit (design system motion: 100ms ease-out in, 75ms ease-in out). */
+@theme {
+  --animate-tooltip-in: tooltip-in 100ms ease-out;
+  --animate-tooltip-out: tooltip-out 75ms ease-in forwards;
+
+  @keyframes tooltip-in {
+    from {
+      opacity: 0;
+      scale: 0.95;
+    }
+  }
+
+  @keyframes tooltip-out {
+    to {
+      opacity: 0;
+    }
+  }
+}
+
 body {
   background: var(--color-white);
   color: var(--color-neutral-900);
