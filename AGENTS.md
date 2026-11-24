@@ -22,6 +22,15 @@ Import a component from its own file (`@/components/ui/Tag/Tag`), not from its f
 
 Object keys are quoted consistently: if one key needs quotes (`"circle-check"`), quote every key in that object. ESLint enforces it (`quote-props`). When no key needs quotes, follow the React, Tailwind and Storybook docs convention and leave them unquoted (`stories: [...]`).
 
+Callback parameters get full names, even in one-line callbacks: `steps.map((step) => ...)`, `options.find((option) => ...)`, `setOpen((open) => !open)`, `(event) => ...`. No single letters like `s`, `o`, `e`. The one exception is an index, which stays `i`.
+
+A set of named values (states, variants, sizes) is an `as const` object plus a type of the same name, never a bare string union and never a TS `enum`. Code compares against the object (`StepState.Current`), not a string literal (`"current"`); lookup tables use computed keys (`[StepState.Done]: ...`).
+
+```ts
+export const StepState = { Done: "done", Current: "current", Pending: "pending" } as const;
+export type StepState = (typeof StepState)[keyof typeof StepState];
+```
+
 ## Design system
 
 Token values (colors, fonts) live in `app/globals.css` (`@theme`) and `app/fonts.ts`; everything else is Tailwind's defaults. The rules for using them live in `design-system/*.md` (colors, typography, spacing, motion, content, states). The Applyst design system artifact (https://claude.ai/artifact/Bjx3BUNy8SeLAiwtMUQm29) is the visual reference and is updated after the code. Don't invent colors, sizes or spacing. If something isn't in the system, ask or pick the nearest existing step.
@@ -29,7 +38,7 @@ Token values (colors, fonts) live in `app/globals.css` (`@theme`) and `app/fonts
 - **Colors:** only the tokens in `design-system/colors.md`, plus `white`. Tailwind's default palette is off (`bg-neutral-600` works, `bg-slate-600` doesn't). Light theme only.
 - **Color meaning:** `primary-600` means "act" (one primary button per view, links, focus ring), never decoration. Status color only on the status badge and the mobile card's left edge.
 - **Units:** rem for type, spacing and component sizes; px only for 1px borders and rings, focus rings, shadows. Never override the root font-size.
-- **Spacing:** Tailwind default steps from `design-system/spacing.md` (4, 8, 12, 16, 24, 32, 48, 64 px). No arbitrary values like `p-[11px]`.
+- **Spacing:** Tailwind default steps from `design-system/spacing.md` (4, 8, 12, 16, 24, 32, 48, 64 px). No arbitrary values like `p-[11px]`. No negative margins (`-ml-0.5`): use uneven padding for optical nudges.
 - **Type** (`design-system/typography.md`): Geist (`font-sans`); Manrope 800 only for the wordmark (`font-display`). Tailwind's size scale only: `text-xs`, `text-sm`, `text-base`, `text-lg`, `text-2xl` (and `text-xl` for the wordmark). Page, modal and section titles use `<Title level>` from `components/ui/Title/Title.tsx`, never a hand-styled heading. Label style is sentence case, never all caps. Form fields use `max-sm:text-base` below 640px.
 - **Contrast:** every text pair reaches 4.5:1. Nothing lighter than `neutral-500` for text.
 - **Focus:** `focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600` on every interactive element.

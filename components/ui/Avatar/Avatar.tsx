@@ -37,7 +37,7 @@ export function Avatar({ name, email, size = "default" }: AvatarProps) {
   return (
     <span
       aria-hidden
-      className={`inline-flex shrink-0 items-center justify-center rounded-full bg-primary-50 font-medium text-primary-600 transition-colors group-hover:bg-primary-100 group-aria-expanded:bg-primary-100 ${sizes[size]}`}
+      className={`inline-flex shrink-0 items-center justify-center rounded-full bg-primary-50 font-medium text-primary-600 transition-colors duration-75 group-hover:bg-primary-100 group-aria-expanded:bg-primary-100 ${sizes[size]}`}
     >
       {initials || <Icon name="user" size="sm" className="text-primary-600" />}
     </span>

@@ -18,19 +18,19 @@ One 4px base unit. Pick from these steps, never an in-between value. No arbitrar
 | Step | px | rem | Typical use |
 | --- | --- | --- | --- |
 | `1` | 4 | 0.25 | Menu padding (`p-1`), icon-to-text nudges |
-| `2` | 8 | 0.5 | Gap inside badges, tags, button icon + label |
+| `2` | 8 | 0.5 | Gap inside badges, tags, button icon + label, error icon + message |
 | `3` | 12 | 0.75 | Cell padding, compact gaps |
 | `4` | 16 | 1 | Default gap, mobile page padding (`px-4`), card padding |
 | `6` | 24 | 1.5 | Tablet page padding (`sm:px-6`), gap between sections |
 | `8` | 32 | 2 | Desktop page padding (`lg:px-8`, `py-8`), large section gaps |
-| `12` | 48 | 3 | Empty-state spacing |
+| `12` | 48 | 3 | Empty-state vertical padding (`py-12`) |
 | `16` | 64 | 4 | Large vertical rhythm |
 
 Steps get bigger as values grow (4, 8, 12, 16, then 24, 32, 48): the eye can't tell 40 from 42, but can tell 8 from 12. Dense UI (table cells, badges, rows) lives in `1` to `4`; save `6` and up for gaps between sections.
 
 ## Component sizes
 
-Fixed heights use the same Tailwind steps.
+Every fixed size in the UI is listed here. A size that isn't in this table is off-scale.
 
 | Element | Class | px |
 | --- | --- | --- |
@@ -39,8 +39,12 @@ Fixed heights use the same Tailwind steps.
 | Small buttons (mobile) | `h-8` | 32 |
 | Menu items | `h-8` | 32 |
 | Table rows | `h-16` | 64 (truncate with an ellipsis) |
+| Primary button minimum width | `min-w-24` | 96 (label swaps don't shift the footer) |
+| Toast width | `w-72` | 288 |
+| Skeleton bar height | `h-2.5` | 10 |
 | Icon, small (buttons, menus, badges) | `size-4` | 16 |
 | Icon, default (icon-only buttons, toasts, chevron) | `size-5` | 20 |
+| Spinner, small / large | `size-4` / `size-6` | 16 / 24 |
 
 `size-3.5` (14px) is allowed only for a rare small chip; it is not a named size.
 
@@ -58,7 +62,7 @@ Fixed heights use the same Tailwind steps.
 | `rounded-md` | 6 | Badges, tags, menu items |
 | `rounded-lg` | 8 | Buttons, inputs, cards, menus, toasts |
 | `rounded-xl` | 12 | Modals |
-| `rounded-full` | | Avatar, star button |
+| `rounded-full` | | Avatar, star button, spinner, skeleton bars |
 
 ## Edges and shadows
 
@@ -70,6 +74,8 @@ Fixed heights use the same Tailwind steps.
 
 ## Rules
 
-- If you reach for a value that isn't here, the design is probably wrong, not the scale.
+- Only the steps and sizes above. If you reach for a value that isn't here, the design is probably wrong, not the scale.
+- Tailwind v4 generates every multiple of the base unit (`p-5`, `p-7` and `p-11` all work), so the config doesn't enforce this scale. Code review does.
 - Break the scale only for optical alignment (1 to 2px nudge) or fixed-size assets, and say why in a comment.
+- No negative margins. Make optical nudges with uneven padding instead (`pl-2.5 pr-3` next to a leading icon), and align elements by their box, not by pulling them outward.
 - Line height comes from the type style, not the spacing scale (see `typography.md`).
