@@ -12,7 +12,7 @@ This file is the only place the timings are defined. After changing it, update t
 | Modal | overlay fade + dialog fade/scale from 95%, 200ms `ease-out` | 150ms `ease-in` |
 | Bottom sheet (mobile) | slide up from below, 250ms `ease-out` | slide down, 200ms `ease-in` |
 | Toast | slide down 8px + fade, 200ms `ease-out` | fade, 150ms `ease-in` |
-| Hover colors | `transition-colors` (150ms default) | |
+| Hover colors | `transition-colors duration-75` (75ms, so hover feels instant) | |
 
 ## Principles
 

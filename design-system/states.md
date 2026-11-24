@@ -70,7 +70,7 @@ Button hovers live in `components/ui/Button/Button.tsx`.
 | Table row | `bg-neutral-50` |
 | Menu item | `bg-neutral-100`, a rounded row inside the menu's `p-1` padding |
 
-Every hover uses `transition-colors`.
+Every hover uses `transition-colors duration-75`.
 
 ## Focus
 
